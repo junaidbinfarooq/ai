@@ -1100,7 +1100,7 @@ final class AiBundle extends AbstractBundle
         if ('supabase' === $type) {
             foreach ($stores as $name => $store) {
                 $arguments = [
-                    new Reference('http_client'),
+                    isset($store['http_client']) ? new Reference($store['http_client']) : new Definition(HttpClientInterface::class),
                     $store['url'],
                     $store['api_key'],
                 ];
